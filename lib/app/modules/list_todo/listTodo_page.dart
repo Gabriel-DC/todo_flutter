@@ -52,16 +52,29 @@ class ListTodoPageState extends State<ListTodoPage> {
             appBar: AppBar(
               title: Text(widget.title),
             ),
-            body: ListView.builder(
-              itemCount: todos.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(todos[index].title!),
-                  trailing:
-                      Text(format.format(DateTime.parse(todos[index].date!))),
-                );
-              },
-            ));
+            body: Center(
+                child: SizedBox(
+              width: MediaQuery.of(context).size.width / 1.1,
+              child: ListView.builder(
+                itemCount: todos.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.black54),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
+                      child: ListTile(
+                        title: Text(todos[index].title!),
+                        trailing: Text(
+                            format.format(DateTime.parse(todos[index].date!))),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            )));
       },
     );
   }

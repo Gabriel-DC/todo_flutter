@@ -11,7 +11,8 @@ class TodoService {
 
   Future<Iterable<TodoModel>> getTodos() async {
     List<Map<String, dynamic>> response = List<Map<String, dynamic>>.from(
-      (await httpClient.get(Uri.https(Environment.apiUrl, "v1/todo"))).data,
+      (await httpClient.get(Uri.https(Environment.apiUrlLocal, "v1/todo")))
+          .data,
     );
 
     return response.map<TodoModel>((e) => TodoModel(
